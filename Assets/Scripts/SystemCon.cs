@@ -22,6 +22,7 @@ public class SystemCon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("SceneOne");
+            Time.timeScale = 1;
         }
     }
 }

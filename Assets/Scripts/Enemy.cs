@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System;
 using TMPro;
 using UnityEngine.UI;
-using System;
+using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -14,13 +14,16 @@ public class Enemy : MonoBehaviour
     private Vector3 directionToPlayer;
     private Vector3 localScale;
 
+    public GameObject Coin;
+
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType(typeof(Player)) as Player;
-        moveSpeed = 2f;
         localScale = transform.localScale;
+        moveSpeed = Random.Range(1.0f, 3.1f);
     }
     private void FixedUpdate()
     {
@@ -51,7 +54,9 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
+            var deadEnemy = GetComponent<Rigidbody2D>().position;
             Destroy(collision.gameObject);
+            Instantiate(Coin, deadEnemy, Quaternion.identity);
         }
     }
 }

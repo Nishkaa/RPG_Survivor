@@ -12,17 +12,14 @@ public class Player : MonoBehaviour
     public float horizontal;
     private Rigidbody2D Player2D;
     public float speed;
-    public float jumpVelocity = 3f;
+
     //public AudioSource Jump;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        speed = 10f;
-
-
         Player2D = gameObject.GetComponent<Rigidbody2D>();
+        Cursor.visible = true;
     }
     public void FixedUpdate()
     {
@@ -51,6 +48,21 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Coin")
         {
             Destroy(collision.gameObject);
+            Score.instance.AddPoint();
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            SceneManager.LoadScene("SceneOne");
+            //PauseGame();
+        }
+    }
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 }
