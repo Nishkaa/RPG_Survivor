@@ -12,12 +12,16 @@ public class Player : MonoBehaviour
     public float horizontal;
     private Rigidbody2D Player2D;
     public float speed;
-
+    public SystemCon syscon;
+    public Text DeadTxt;
+    public GameObject BackToMenu;
+    public GameObject Replay;
     //public AudioSource Jump;
 
     // Start is called before the first frame update
     void Start()
     {
+
         Player2D = gameObject.GetComponent<Rigidbody2D>();
         Cursor.visible = true;
     }
@@ -53,16 +57,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
-            SceneManager.LoadScene("SceneOne");
-            //PauseGame();
+            DeadTxt.gameObject.SetActive(true);
+            BackToMenu.gameObject.SetActive(true);
+            Replay.gameObject.SetActive(true);
         }
     }
-    void PauseGame()
-    {
-        Time.timeScale = 0;
-    }
-    void ResumeGame()
-    {
-        Time.timeScale = 1;
-    }
+
 }

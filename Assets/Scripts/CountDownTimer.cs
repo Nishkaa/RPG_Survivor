@@ -11,6 +11,9 @@ public class CountDownTimer : MonoBehaviour
     public Text timerText;
     float minutes;
     float seconds;
+    public Text Survived;
+    public GameObject BackToMenu;
+    public GameObject Replay;
     // Start is called before the first frame update
     public void Start()
     {
@@ -20,6 +23,14 @@ public class CountDownTimer : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if (timeValue > 1200)
+        {
+            Time.timeScale = 0;
+            Survived.gameObject.SetActive(true);
+            BackToMenu.gameObject.SetActive(true);
+            Replay.gameObject.SetActive(true);
+
+        }
         if (timeValue > 0)
         {
             timeValue += Time.deltaTime;

@@ -9,6 +9,9 @@ using System;
 
 public class SystemCon : MonoBehaviour
 {
+    public GameObject BackToMenu;
+    public GameObject Replay;
+    public bool Esc = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +27,32 @@ public class SystemCon : MonoBehaviour
             SceneManager.LoadScene("SceneOne");
             Time.timeScale = 1;
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && Esc == false)
+        {
+            Esc = true;
+            Time.timeScale = 0;
+            Debug.Log("Pressed Escape");
+            Debug.Log("Paused Game");
+            BackToMenu.gameObject.SetActive(true);
+            Replay.gameObject.SetActive(true);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && Esc == true)
+        {
+            Esc = false;
+            Time.timeScale = 1;
+            Debug.Log("Pressed Escape");
+            Debug.Log("Unpause Game");
+            BackToMenu.gameObject.SetActive(false);
+            Replay.gameObject.SetActive(false);
+        }
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 }
