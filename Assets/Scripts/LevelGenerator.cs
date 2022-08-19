@@ -25,30 +25,30 @@ public class LevelGenerator : MonoBehaviour
 
     public float distance;
     public float enemySpeed = 1;
-    public float SpawnTime;
-    public float WeaponSpawnTime;
+    float SpawnTime;
+    float WeaponSpawnTime = 5f;
     public float health = 100f;
     public CountDownTimer TimerTEA;
     public void Start()
     {
         MobSpawn();
-        WeaponSpawn();
-
+        StartCoroutine(WeaponSpawner());
 
     }
     public void Update()
     {
+
         if (TimerTEA.timeValue > 60)
         {
-            SpawnTime = Random.Range(1f, 15f);
+            SpawnTime = Random.Range(5f, 15f);
         }
         if (TimerTEA.timeValue > 120)
         {
-            SpawnTime = Random.Range(1f, 10f);
+            SpawnTime = Random.Range(3f, 10f);
         }
         if (TimerTEA.timeValue > 180)
         {
-            SpawnTime = Random.Range(1f, 5f);
+            SpawnTime = Random.Range(2f, 5f);
         }
         else
         {
@@ -61,57 +61,52 @@ public class LevelGenerator : MonoBehaviour
         //spawning Mob1
         var enemy = Instantiate(Mob1, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy.transform.localScale = new Vector3(1, 1, 1);
-        distance += 20;
+        distance += 30;
         //LVL 2 Enemy
         //spawning Mob2
         var enemy2 = Instantiate(Mob2, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy2.transform.localScale = new Vector3(3, 3, 1);
-
-        distance += 20;
+        distance += 30;
         //LVL 3 Enemy
         //spawning Mob3
         var enemy3 = Instantiate(Mob3, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy3.transform.localScale = new Vector3(3, 3, 1);
-        distance += 20;
+        distance += 30;
         //LVL 4 Enemy
         //spawning Mob4
         var enemy4 = Instantiate(Mob4, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy4.transform.localScale = new Vector3(5, 5, 1);
-        distance += 20;
+        distance += 30;
         //LVL 5 Enemy
         //spawning Mob5
         var enemy5 = Instantiate(Mob5, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy5.transform.localScale = new Vector3(2, 2, 1);
-        distance += 20;
+        distance += 30;
         //LVL 6 Enemy
         //spawning Mob6
         var enemy6 = Instantiate(Mob6, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy6.transform.localScale = new Vector3(3, 3, 1);
-        distance += 20;
+        distance += 30;
         //LVL 7 Enemy
         //spawning Mob7
         var enemy7 = Instantiate(Mob7, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
-        enemy7.transform.localScale = new Vector3(2, 2, 1);
-        distance += 20;
+        enemy7.transform.localScale = new Vector3(5, 5, 1);
+        distance += 30;
         //LVL 8 Enemy
         //spawning Mob8
         var enemy8 = Instantiate(Mob8, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy8.transform.localScale = new Vector3(3, 3, 1);
-        distance += 20;
+        distance += 30;
         //LVL 9 Enemy
         //spawning Mob9
         var enemy9 = Instantiate(Mob9, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         enemy9.transform.localScale = new Vector3(3, 3, 1);
-        distance += 20;
+        distance += 30;
         //LVL 10 Enemy
         //spawning Mob10
         var enemy10 = Instantiate(Mob10, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
-        enemy10.transform.localScale = new Vector3(3, 3, 1);
-        distance += 20;
-
-        //Destroy after 60 seconds
-        Destroy(enemy, 30);
-        Destroy(enemy2, 30);
+        enemy10.transform.localScale = new Vector3(7, 7, 1);
+        distance += 30;
         //spawn cooldown
         StartCoroutine(Spawner());
 
@@ -121,17 +116,18 @@ public class LevelGenerator : MonoBehaviour
         //LVL First Weapon
         //spawning Weapon
         var Weapon1 = Instantiate(WeaponOne, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
-        Weapon1.transform.localScale = new Vector3(3f, 3f, 1);
-
+        Weapon1.transform.localScale = new Vector3(2f, 2f, 2f);
+        Destroy(Weapon1, 10f);
         var Weapon2 = Instantiate(WeaponTwo, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
-        Weapon2.transform.localScale = new Vector3(3f, 3f, 1);
+        Weapon2.transform.localScale = new Vector3(2f, 2f, 2f);
         distance += 20;
-
+        Destroy(Weapon2, 10f);
         var Weapon3 = Instantiate(WeaponThree, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
-        Weapon3.transform.localScale = new Vector3(3f, 3f, 1);
+        Weapon3.transform.localScale = new Vector3(2f, 2f, 2f);
         distance += 20;
-
+        Destroy(Weapon3, 10f);
         StartCoroutine(WeaponSpawner());
+
     }
 
     public IEnumerator Spawner()
@@ -145,6 +141,7 @@ public class LevelGenerator : MonoBehaviour
     }
     public IEnumerator WeaponSpawner()
     {
+        //Assuming the enemy is always moving
         Debug.Log("Starting Coroutine");
         yield return new WaitForSeconds(WeaponSpawnTime);
         Debug.Log("Waiting Coroutine");

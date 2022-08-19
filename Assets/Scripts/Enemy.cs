@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType(typeof(Player)) as Player;
         localScale = transform.localScale;
-        moveSpeed = Random.Range(1.0f, 3.1f);
+        moveSpeed = Random.Range(1.0f, 4f);
     }
     private void FixedUpdate()
     {

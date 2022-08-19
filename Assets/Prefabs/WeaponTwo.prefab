@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6270898282265387158}
   - component: {fileID: 916856686831924247}
-  - component: {fileID: -7531061829681292746}
+  - component: {fileID: 7081595810535033438}
   m_Layer: 0
   m_Name: WeaponTwo
   m_TagString: WeaponTwo
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: b7a6efd31c237094e96f900c6411d62b, type: 3}
+  m_Sprite: {fileID: -6291554091245466196, guid: abd742a3be94fb94aa7882f222f6cf1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-7531061829681292746
-BoxCollider2D:
+--- !u!58 &7081595810535033438
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,16 +96,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.06}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.29, y: 0.06}
-  m_EdgeRadius: 0
+  m_Radius: 0.13

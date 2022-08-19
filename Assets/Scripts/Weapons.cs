@@ -40,11 +40,12 @@ public class Weapons : MonoBehaviour
     {
         Look();
     }
+
     public void Look()
     {
         Vector2 targetPos = Target.position;
         Direction = targetPos - (Vector2)transform.position;
-
+        Direction = Direction.normalized;
         RaycastHit2D rayInfo = Physics2D.Raycast(transform.position, Direction, Range);
         if (rayInfo)
         {
@@ -76,7 +77,7 @@ public class Weapons : MonoBehaviour
             }
         }
     }
-    void Shoot()
+    public void Shoot()
     {
         normalGun = true;
         if (normalGun)
@@ -91,7 +92,7 @@ public class Weapons : MonoBehaviour
 
         }
     }
-    void ShootShotgun()
+    public void ShootShotgun()
     {
         if (shotGun == true)
         {
@@ -110,26 +111,27 @@ public class Weapons : MonoBehaviour
 
         }
     }
-    void Automatic()
+    public void Automatic()
     {
 
         if (automatic == true)
         {
-            FireRate = 7;
+            FireRate = 3;
             GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
             BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
+
         }
         else
         {
 
         }
     }
-    void Laser()
+    public void Laser()
     {
 
         if (laser == true)
         {
-            FireRate = 1000f;
+            FireRate = 10f;
 
             GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
             BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
@@ -173,7 +175,6 @@ public class Weapons : MonoBehaviour
             shotGun = false;
             automatic = false;
             normalGun = false;
-
             Destroy(collision.gameObject);
             Debug.Log(laser + " laser");
         }
