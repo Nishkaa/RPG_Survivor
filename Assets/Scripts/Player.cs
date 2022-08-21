@@ -16,12 +16,14 @@ public class Player : MonoBehaviour
     public Text DeadTxt;
     public GameObject BackToMenu;
     public GameObject Replay;
-    //public AudioSource Jump;
+    public GameObject PlayerObj;
+    public GameObject SpawnParticleSystem;
+    public ParticleSystem Death;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        SpawnParticleSystem.SetActive(true);
         Player2D = gameObject.GetComponent<Rigidbody2D>();
         Cursor.visible = true;
     }
@@ -35,10 +37,12 @@ public class Player : MonoBehaviour
         //Move left or right
         if (horizontal > 0.5f || horizontal < -0.5f)
         {
+
             transform.Translate(new Vector3(horizontal * speed * Time.deltaTime, 0f, 0f));
         }
         if (vertical > 0.5f || vertical < -0.5f)
         {
+
             transform.Translate(new Vector3(0f, vertical * speed * Time.deltaTime, 0f));
         }
     }
@@ -56,11 +60,18 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.tag == "Enemy")
         {
+            Time.timeScale = 0;
+            GetComponent<Collider2D>().enabled = false;
             Destroy(collision.gameObject);
+            PlayerObj.SetActive(false);
             DeadTxt.gameObject.SetActive(true);
             BackToMenu.gameObject.SetActive(true);
             Replay.gameObject.SetActive(true);
+            Death.Play();
+            GetComponent<Collider2D>().enabled = false;
+
         }
     }
+
 
 }

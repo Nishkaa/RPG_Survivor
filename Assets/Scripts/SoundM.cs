@@ -6,24 +6,11 @@ using System;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Audio;
 public class SoundM : MonoBehaviour
 {
-    private static GameObject instance;
-    public AudioSource BackGroundMusic;
     void Awake()
     {
-        BackGroundMusic.Play();
-        DontDestroyOnLoad(this.gameObject);
-        if (instance == null)
-        {
-            instance = gameObject;
-        }
-
-        else
-        {
-            Destroy(gameObject);
-        }
-
 
     }
 }

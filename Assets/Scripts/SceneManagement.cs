@@ -15,15 +15,16 @@ public class SceneManagement : MonoBehaviour
     }
     public void QuitGame()
     {
-        Debug.Log("quit");
         Application.Quit();
     }
     public void BackToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
     public void Replay()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("SceneOne");
     }
     public void GoToOptions()

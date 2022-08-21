@@ -31,8 +31,7 @@ public class SystemCon : MonoBehaviour
         {
             Esc = true;
             Time.timeScale = 0;
-            Debug.Log("Pressed Escape");
-            Debug.Log("Paused Game");
+
             BackToMenu.gameObject.SetActive(true);
             Replay.gameObject.SetActive(true);
 
@@ -41,8 +40,6 @@ public class SystemCon : MonoBehaviour
         {
             Esc = false;
             Time.timeScale = 1;
-            Debug.Log("Pressed Escape");
-            Debug.Log("Unpause Game");
             BackToMenu.gameObject.SetActive(false);
             Replay.gameObject.SetActive(false);
         }

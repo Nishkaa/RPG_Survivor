@@ -11,6 +11,8 @@ TagManager:
   - WeaponTwo
   - WeaponThree
   - WeaponFour
+  - MenuMusic
+  - LaserBullet
   layers:
   - Default
   - TransparentFX

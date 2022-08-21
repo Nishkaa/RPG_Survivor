@@ -16,6 +16,7 @@ public class Weapons : MonoBehaviour
 
     public GameObject Gun;
     public GameObject Bullet;
+    public GameObject LaserBullet;
     public GameObject ShotgunBullet;
 
     public float FireRate;
@@ -23,6 +24,7 @@ public class Weapons : MonoBehaviour
     public Transform ShootPoint;
     public Transform shooting_position;
     public float force;
+    public float LaserForce;
 
     public bool normalGun = true;
     public bool shotGun = false;
@@ -32,7 +34,9 @@ public class Weapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        normalGun = true;
+        automatic = false;
+        laser = false;
     }
 
     // Update is called once per frame
@@ -69,42 +73,26 @@ public class Weapons : MonoBehaviour
                 if (Time.time > nextTimeToFire)
                 {
                     nextTimeToFire = Time.time + 1 / FireRate;
+
                     Shoot();
-                    ShootShotgun();
+
                     Automatic();
                     Laser();
+
                 }
             }
         }
     }
     public void Shoot()
     {
-        normalGun = true;
-        if (normalGun)
-        {
-            FireRate = 1;
-            GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
-            BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
-            StartCoroutine(CleanBulletWaste());
-        }
-        else
+        Debug.Log("Normalgun " + normalGun);
+        if (normalGun == true)
         {
 
-        }
-    }
-    public void ShootShotgun()
-    {
-        if (shotGun == true)
-        {
             FireRate = 1;
             GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
-            GameObject BulletIns1 = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
-            GameObject BulletIns2 = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
-            GameObject BulletIns3 = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
             BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
-            BulletIns1.GetComponent<Rigidbody2D>().AddForce(Direction * 2 * force);
-            BulletIns2.GetComponent<Rigidbody2D>().AddForce(Direction * 3 * force);
-            BulletIns3.GetComponent<Rigidbody2D>().AddForce(Direction * 5 * force);
+
         }
         else
         {
@@ -116,10 +104,9 @@ public class Weapons : MonoBehaviour
 
         if (automatic == true)
         {
-            FireRate = 3;
+            FireRate = 4;
             GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
             BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
-
         }
         else
         {
@@ -131,10 +118,13 @@ public class Weapons : MonoBehaviour
 
         if (laser == true)
         {
-            FireRate = 10f;
+            normalGun = false;
+            Debug.Log("laser " + laser);
+            Debug.Log("Normalgun " + normalGun);
 
-            GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
-            BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
+            FireRate = 0.7f;
+            GameObject LaserIns = Instantiate(LaserBullet, ShootPoint.position, shooting_position.rotation);
+            LaserIns.GetComponent<Rigidbody2D>().AddForce(Direction * LaserForce);
 
         }
         else
@@ -150,39 +140,30 @@ public class Weapons : MonoBehaviour
     {
         if (collision.gameObject.tag == "WeaponOne")
         {
-            shotGun = true;
+
             laser = false;
             normalGun = false;
             automatic = false;
 
             Destroy(collision.gameObject);
-            Debug.Log(shotGun + " shotgun");
+
         }
         if (collision.gameObject.tag == "WeaponTwo")
         {
             automatic = true;
             laser = false;
-            shotGun = false;
             normalGun = false;
 
-
             Destroy(collision.gameObject);
-            Debug.Log(automatic + " automatic gun");
+
         }
         if (collision.gameObject.tag == "WeaponThree")
         {
             laser = true;
-            shotGun = false;
+
             automatic = false;
             normalGun = false;
             Destroy(collision.gameObject);
-            Debug.Log(laser + " laser");
         }
-    }
-    public IEnumerator CleanBulletWaste()
-    {
-        Debug.Log("Starting Coroutine");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Waiting Coroutine");
     }
 }

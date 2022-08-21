@@ -49,13 +49,20 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+
+            // Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "Bullet")
         {
+
             var deadEnemy = GetComponent<Rigidbody2D>().position;
             Destroy(collision.gameObject);
+            Instantiate(Coin, deadEnemy, Quaternion.identity);
+        }
+        if (collision.gameObject.tag == "LaserBullet")
+        {
+            var deadEnemy = GetComponent<Rigidbody2D>().position;
             Instantiate(Coin, deadEnemy, Quaternion.identity);
         }
     }

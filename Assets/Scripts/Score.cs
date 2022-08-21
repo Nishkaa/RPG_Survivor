@@ -39,6 +39,6 @@ public class Score : MonoBehaviour
         Debug.Log("Starting Coroutine");
         yield return new WaitForSeconds(scoreWait);
         PlusOne.gameObject.SetActive(false);
-        Debug.Log("Waiting Coroutine");
+
     }
 }

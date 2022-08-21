@@ -115,9 +115,7 @@ public class LevelGenerator : MonoBehaviour
     {
         //LVL First Weapon
         //spawning Weapon
-        var Weapon1 = Instantiate(WeaponOne, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
-        Weapon1.transform.localScale = new Vector3(2f, 2f, 2f);
-        Destroy(Weapon1, 10f);
+
         var Weapon2 = Instantiate(WeaponTwo, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         Weapon2.transform.localScale = new Vector3(2f, 2f, 2f);
         distance += 20;
@@ -133,20 +131,14 @@ public class LevelGenerator : MonoBehaviour
     public IEnumerator Spawner()
     {
         //Assuming the enemy is always moving
-        Debug.Log("Starting Coroutine");
         yield return new WaitForSeconds(SpawnTime);
-        Debug.Log("Waiting Coroutine");
         MobSpawn();
-        Debug.Log("Finished");
     }
     public IEnumerator WeaponSpawner()
     {
         //Assuming the enemy is always moving
-        Debug.Log("Starting Coroutine");
         yield return new WaitForSeconds(WeaponSpawnTime);
-        Debug.Log("Waiting Coroutine");
         WeaponSpawn();
-        Debug.Log("Finished");
     }
 
 }
