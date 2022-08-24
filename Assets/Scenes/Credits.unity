@@ -319,11 +319,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252955593}
   m_CullTransparentMesh: 1
---- !u!82 &264981254 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2073083792699147677, guid: be8a5e66a9128e845b40208d5660d42c, type: 3}
-  m_PrefabInstance: {fileID: 768544676}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &266745621
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +660,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 768544677}
-  - {fileID: 1238399475}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -676,6 +670,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 708119824}
     m_Modifications:
+    - target: {fileID: 2073083792699147677, guid: be8a5e66a9128e845b40208d5660d42c, type: 3}
+      propertyPath: m_Pitch
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2073083792699147678, guid: be8a5e66a9128e845b40208d5660d42c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -907,7 +905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe841e446a608a499a4e9d159f14a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ui_ButtonHover: {fileID: 264981254}
+  Ui_ButtonHover: {fileID: 1802470758}
   hoverEFX: {fileID: 8300000, guid: ec3ed634c13d90b409c06c79b2511a59, type: 3}
 --- !u!114 &809228601
 MonoBehaviour:
@@ -1138,7 +1136,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 708119824}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6248342551307921012, guid: 12b82657e0552134dbac58b17480310f, type: 3}
       propertyPath: m_Name
@@ -1146,19 +1144,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6248342551307921014, guid: 12b82657e0552134dbac58b17480310f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6248342551307921014, guid: 12b82657e0552134dbac58b17480310f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.697205
+      value: 528.0025
       objectReference: {fileID: 0}
     - target: {fileID: 6248342551307921014, guid: 12b82657e0552134dbac58b17480310f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -114.5397
+      value: 129.06659
       objectReference: {fileID: 0}
     - target: {fileID: 6248342551307921014, guid: 12b82657e0552134dbac58b17480310f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9786835
+      value: -167.65202
       objectReference: {fileID: 0}
     - target: {fileID: 6248342551307921014, guid: 12b82657e0552134dbac58b17480310f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1190,11 +1188,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12b82657e0552134dbac58b17480310f, type: 3}
---- !u!4 &1238399475 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6248342551307921014, guid: 12b82657e0552134dbac58b17480310f, type: 3}
-  m_PrefabInstance: {fileID: 1238399474}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1238399476 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6248342551307921012, guid: 12b82657e0552134dbac58b17480310f, type: 3}
@@ -1357,3 +1350,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799108675}
   m_CullTransparentMesh: 1
+--- !u!82 &1802470758 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2073083792699147677, guid: be8a5e66a9128e845b40208d5660d42c, type: 3}
+  m_PrefabInstance: {fileID: 768544676}
+  m_PrefabAsset: {fileID: 0}

@@ -18,6 +18,7 @@ public class Weapons : MonoBehaviour
     public GameObject Bullet;
     public GameObject LaserBullet;
     public GameObject ShotgunBullet;
+    public GameObject PlusOneAnim;
 
     public float FireRate;
     float nextTimeToFire;
@@ -30,7 +31,10 @@ public class Weapons : MonoBehaviour
     public bool shotGun = false;
     public bool automatic = false;
     public bool laser = false;
-
+    public AudioSource TakeWeapon;
+    public AudioSource TakeBoostBullet;
+    public AudioSource ShootAutomatic;
+    public float bulletAnimWait = 0.4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +79,6 @@ public class Weapons : MonoBehaviour
                     nextTimeToFire = Time.time + 1 / FireRate;
 
                     Shoot();
-
                     Automatic();
                     Laser();
 
@@ -88,8 +91,8 @@ public class Weapons : MonoBehaviour
         Debug.Log("Normalgun " + normalGun);
         if (normalGun == true)
         {
-
-            FireRate = 1;
+            ShootAutomatic.Play();
+            //FireRate = 1;
             GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
             BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
 
@@ -104,7 +107,8 @@ public class Weapons : MonoBehaviour
 
         if (automatic == true)
         {
-            FireRate = 4;
+            ShootAutomatic.Play();
+            FireRate = 5;
             GameObject BulletIns = Instantiate(Bullet, ShootPoint.position, shooting_position.rotation);
             BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
         }
@@ -118,11 +122,12 @@ public class Weapons : MonoBehaviour
 
         if (laser == true)
         {
+
             normalGun = false;
             Debug.Log("laser " + laser);
             Debug.Log("Normalgun " + normalGun);
 
-            FireRate = 0.7f;
+            FireRate = 0.6f;
             GameObject LaserIns = Instantiate(LaserBullet, ShootPoint.position, shooting_position.rotation);
             LaserIns.GetComponent<Rigidbody2D>().AddForce(Direction * LaserForce);
 
@@ -150,6 +155,7 @@ public class Weapons : MonoBehaviour
         }
         if (collision.gameObject.tag == "WeaponTwo")
         {
+            TakeWeapon.Play();
             automatic = true;
             laser = false;
             normalGun = false;
@@ -160,10 +166,25 @@ public class Weapons : MonoBehaviour
         if (collision.gameObject.tag == "WeaponThree")
         {
             laser = true;
-
+            TakeWeapon.Play();
             automatic = false;
             normalGun = false;
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "PlusOneSpeed")
+        {
+            FireRate++;
+            PlusOneAnim.gameObject.SetActive(true);
+            StartCoroutine(AddBulletSpeed());
+            Destroy(collision.gameObject);
+        }
+    }
+    public IEnumerator AddBulletSpeed()
+    {
+        TakeBoostBullet.Play();
+        Debug.Log("Starting Coroutine");
+        yield return new WaitForSeconds(bulletAnimWait);
+        PlusOneAnim.gameObject.SetActive(false);
+
     }
 }

@@ -31,6 +31,7 @@ public class SceneManagement : MonoBehaviour
     {
         SceneManager.LoadScene("Options");
     }
+
     public void GoToCredits()
     {
         SceneManager.LoadScene("Credits");

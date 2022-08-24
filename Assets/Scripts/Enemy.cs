@@ -13,9 +13,9 @@ public class Enemy : MonoBehaviour
     private float moveSpeed;
     private Vector3 directionToPlayer;
     private Vector3 localScale;
-
+    public ParticleSystem EnemyDeath;
     public GameObject Coin;
-
+    public AudioSource EnemyDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,9 +55,15 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.tag == "Bullet")
         {
-
+            //Enemy Dead Sound Effect
+            EnemyDead.Play();
+            //Enemy Death Particle Effect
+            EnemyDeath.Play();
+            //Enemy Rigidbody2D
             var deadEnemy = GetComponent<Rigidbody2D>().position;
+            //Destroying GameObject
             Destroy(collision.gameObject);
+            //Spawning Coin after enemy is dead
             Instantiate(Coin, deadEnemy, Quaternion.identity);
         }
         if (collision.gameObject.tag == "LaserBullet")

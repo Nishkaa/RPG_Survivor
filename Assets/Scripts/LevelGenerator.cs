@@ -23,16 +23,20 @@ public class LevelGenerator : MonoBehaviour
     public GameObject WeaponTwo;
     public GameObject WeaponThree;
 
+    public GameObject BonusOneSpeed;
+
     public float distance;
     public float enemySpeed = 1;
     float SpawnTime;
-    float WeaponSpawnTime = 5f;
+    float WeaponSpawnTime = 30f;
+    float BonusSpawnTime = 20f;
     public float health = 100f;
     public CountDownTimer TimerTEA;
     public void Start()
     {
         MobSpawn();
         StartCoroutine(WeaponSpawner());
+        StartCoroutine(BonusSpawner());
 
     }
     public void Update()
@@ -119,15 +123,22 @@ public class LevelGenerator : MonoBehaviour
         var Weapon2 = Instantiate(WeaponTwo, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         Weapon2.transform.localScale = new Vector3(2f, 2f, 2f);
         distance += 20;
-        Destroy(Weapon2, 10f);
+        Destroy(Weapon2, 20f);
         var Weapon3 = Instantiate(WeaponThree, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
         Weapon3.transform.localScale = new Vector3(2f, 2f, 2f);
         distance += 20;
-        Destroy(Weapon3, 10f);
+        Destroy(Weapon3, 20f);
         StartCoroutine(WeaponSpawner());
 
     }
-
+    public void BonusesSpawn()
+    {
+        var BonusSpeed = Instantiate(BonusOneSpeed, new Vector2(Random.Range(-30, 30), Random.Range(-16, 18)), Quaternion.identity);
+        BonusSpeed.transform.localScale = new Vector3(1f, 1f, 1f);
+        distance += 30;
+        Destroy(BonusSpeed, 10f);
+        StartCoroutine(BonusSpawner());
+    }
     public IEnumerator Spawner()
     {
         //Assuming the enemy is always moving
@@ -140,5 +151,10 @@ public class LevelGenerator : MonoBehaviour
         yield return new WaitForSeconds(WeaponSpawnTime);
         WeaponSpawn();
     }
-
+    public IEnumerator BonusSpawner()
+    {
+        //Assuming the enemy is always moving
+        yield return new WaitForSeconds(BonusSpawnTime);
+        BonusesSpawn();
+    }
 }

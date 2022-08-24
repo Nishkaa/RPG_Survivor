@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
     public Text scoreText;
     public Text PlusOne;
     public Text highscoreText;
+    public Text highscoreTextThumbnail;
     public static Score instance;
     public float scoreWait = 0.5f;
     int score = 0;
@@ -15,8 +16,9 @@ public class Score : MonoBehaviour
     void Start()
     {
         highscore = PlayerPrefs.GetInt("highscore", 0);
-        scoreText.text = score.ToString();
         highscoreText.text = highscore.ToString();
+
+        highscoreTextThumbnail.text = highscore.ToString();
     }
 
     public void Awake()
@@ -28,10 +30,12 @@ public class Score : MonoBehaviour
         PlusOne.gameObject.SetActive(true);
         StartCoroutine(AddOneScore());
         score += 1;
-        scoreText.text = score.ToString() + " POINTS";
+        scoreText.text = score.ToString();
         if (highscore < score)
         {
+
             PlayerPrefs.SetInt("highscore", score);
+
         }
     }
     public IEnumerator AddOneScore()

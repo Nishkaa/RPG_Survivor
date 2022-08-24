@@ -6,11 +6,21 @@ using System;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using UnityEngine.Audio;
+
 public class SoundM : MonoBehaviour
 {
-    void Awake()
+    public static SoundM instance;
+    public void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
 
+        }
     }
 }

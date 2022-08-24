@@ -9,7 +9,7 @@ using System;
 public class Bullet : MonoBehaviour
 {
 
-
+    public float deathTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +27,19 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+
+            Destroy(collision.gameObject, 0.4f);
+            //Enemy Death Particle System Animation
 
         }
+
+    }
+    public IEnumerator WaitOneSecond()
+    {
+
+        //Assuming the enemy is always moving
+        yield return new WaitForSeconds(deathTime);
+        //pause game
 
     }
 }
