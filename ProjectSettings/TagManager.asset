@@ -14,6 +14,7 @@ TagManager:
   - MenuMusic
   - LaserBullet
   - PlusOneSpeed
+  - Target
   layers:
   - Default
   - TransparentFX

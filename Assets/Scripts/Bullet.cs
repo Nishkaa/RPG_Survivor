@@ -27,10 +27,8 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-
-            Destroy(collision.gameObject, 0.4f);
+            Destroy(collision.gameObject, 0.29f);
             //Enemy Death Particle System Animation
-
         }
 
     }

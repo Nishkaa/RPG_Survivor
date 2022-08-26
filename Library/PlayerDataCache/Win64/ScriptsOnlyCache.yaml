@@ -702,7 +702,7 @@ ScriptsOnlyBuild:
     className: XRSystemData
   - hash:
       serializedVersion: 2
-      Hash: d9e62a6f62b18fd4ad49e0abd592536a
+      Hash: e1c92ed02e915d12b042e55e196a9899
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player

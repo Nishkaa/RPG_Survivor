@@ -77,11 +77,9 @@ public class Weapons : MonoBehaviour
                 if (Time.time > nextTimeToFire)
                 {
                     nextTimeToFire = Time.time + 1 / FireRate;
-
                     Shoot();
                     Automatic();
                     Laser();
-
                 }
             }
         }

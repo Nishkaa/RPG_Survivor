@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public float horizontal;
     private Rigidbody2D Player2D;
     public float speed;
-    public SystemCon syscon;
 
     public Text DeadTxt;
     public GameObject BackToMenu;
@@ -29,6 +28,7 @@ public class Player : MonoBehaviour
     public ParticleSystem DashPS;
     public AudioSource TakeCoin;
     public AudioSource PlayerDeath;
+    public AudioSource PlayerDash;
 
     float fontSizeTime = 0.3f;
     public Text changingText;
@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
     }
     public IEnumerator Dash()
     {
+        PlayerDash.Play();
         DashPS.Play();
         speed = 50;
         Debug.Log("Start " + speed);
