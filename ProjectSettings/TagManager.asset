@@ -15,6 +15,7 @@ TagManager:
   - LaserBullet
   - PlusOneSpeed
   - Target
+  - ReEnable
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Water
   - UI
   - Players
-  - 
-  - 
+  - WallHorizontal
+  - WallVertical
   - 
   - 
   - 

@@ -72,4 +72,5 @@ public class Enemy : MonoBehaviour
             Instantiate(Coin, deadEnemy, Quaternion.identity);
         }
     }
+
 }

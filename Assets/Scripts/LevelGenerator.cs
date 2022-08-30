@@ -52,6 +52,10 @@ public class LevelGenerator : MonoBehaviour
     }
     public void Update()
     {
+        if (TimerTEA.timeValue > 15)
+        {
+            SpawnTime = Random.Range(8f, 19f);
+        }
         if (TimerTEA.timeValue > 30)
         {
             SpawnTime = Random.Range(7f, 18f);
@@ -66,7 +70,7 @@ public class LevelGenerator : MonoBehaviour
         }
         if (TimerTEA.timeValue > 180)
         {
-            SpawnTime = Random.Range(2f, 5f);
+            SpawnTime = Random.Range(1f, 5f);
         }
         else
         {
@@ -171,6 +175,6 @@ public class LevelGenerator : MonoBehaviour
     {
         //Assuming the enemy is always moving
         yield return new WaitForSeconds(BonusSpawnTime);
-        BonusesSpawn();
+
     }
 }

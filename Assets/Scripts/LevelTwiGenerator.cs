@@ -8,18 +8,22 @@ using System;
 using Random = UnityEngine.Random;
 public class LevelTwiGenerator : MonoBehaviour
 {
-    public GameObject LaserWall;
-    public float LaserSpawnTime = 1f;
-    public float distance;
-    public float lowest = 0.2f;
-    public float highest = 0.8f;
-    public float speed = 1;
+    public GameObject LaserWallVertical;
+    public GameObject LaserWallHorizontal;
+    public GameObject DiamondBonus;
+    private float LaserSpawnTime = 1f;
+    private float DiamondSpawnTime = 1f;
+    private float distance = 1f;
+    private float lowest = 1f;
+    private float highest = 1f;
+    private float speed = 1;
 
 
     // Start is called before the first frame update
     void Start()
     {
         LaserGen();
+        DiamondGen();
     }
 
     // Update is called once per frame
@@ -27,21 +31,37 @@ public class LevelTwiGenerator : MonoBehaviour
     {
 
     }
-    public void FixedUpdate()
-    {
-
-    }
     public void LaserGen()
     {
-        var LaserW = Instantiate(LaserWall, new Vector2(Random.Range(-45, 45), Random.Range(-26, 28)), Quaternion.identity);
-        LaserW.transform.localScale = new Vector3(Random.Range(lowest, highest), 1, 1);
-        distance += 30;
+        var LaserWV = Instantiate(LaserWallVertical, new Vector2(Random.Range(-43, 43), Random.Range(-24, 24)), Quaternion.identity);
+        LaserWV.transform.localScale = new Vector3(Random.Range(lowest, highest), Random.Range(lowest, highest), 1);
+        Destroy(LaserWV, 10);
+        distance += 1f;
+
+        var LaserWH = Instantiate(LaserWallHorizontal, new Vector2(Random.Range(-43, 43), Random.Range(-24, 24)), Quaternion.identity);
+        LaserWH.transform.localScale = new Vector3(Random.Range(lowest, highest), Random.Range(lowest, highest), 1);
+        Destroy(LaserWV, 10);
+        distance += 1f;
+
         StartCoroutine(SpawnCooldown());
+    }
+    public void DiamondGen()
+    {
+        var Diamond = Instantiate(DiamondBonus, new Vector2(Random.Range(-43, 43), Random.Range(-24, 24)), Quaternion.identity);
+        Diamond.transform.localScale = new Vector3(1, 1, 1);
+        distance += 10f;
+        StartCoroutine(DiamonSpawn());
     }
     public IEnumerator SpawnCooldown()
     {
         //Assuming the enemy is always moving
         yield return new WaitForSeconds(LaserSpawnTime);
         LaserGen();
+    }
+    public IEnumerator DiamonSpawn()
+    {
+        //Assuming the enemy is always moving
+        yield return new WaitForSeconds(DiamondSpawnTime);
+        DiamondGen();
     }
 }

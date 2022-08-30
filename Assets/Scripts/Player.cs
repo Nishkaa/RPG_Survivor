@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
         SpawnParticleSystem.SetActive(true);
         Player2D = gameObject.GetComponent<Rigidbody2D>();
-        Cursor.visible = true;
+
     }
     public void FixedUpdate()
     {
@@ -91,6 +91,7 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
 
             //Adds 1 point to Score
+            LevelTwoScore.instance.AddPoint();
             Score.instance.AddPoint();
         }
         if (collision.gameObject.tag == "Enemy")

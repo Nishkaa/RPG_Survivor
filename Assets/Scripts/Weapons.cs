@@ -76,6 +76,7 @@ public class Weapons : MonoBehaviour
                 Gun.transform.up = Direction;
                 if (Time.time > nextTimeToFire)
                 {
+                    //Fire Rate
                     nextTimeToFire = Time.time + 1 / FireRate;
                     Shoot();
                     Automatic();
@@ -86,7 +87,7 @@ public class Weapons : MonoBehaviour
     }
     public void Shoot()
     {
-        Debug.Log("Normalgun " + normalGun);
+        //Starting speed of the gun
         if (normalGun == true)
         {
             ShootAutomatic.Play();

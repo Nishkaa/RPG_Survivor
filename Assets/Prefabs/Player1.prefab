@@ -239,11 +239,24 @@ MonoBehaviour:
   vertical: 0
   horizontal: 0
   speed: 4
-  syscon: {fileID: 0}
   DeadTxt: {fileID: 0}
   BackToMenu: {fileID: 0}
   Replay: {fileID: 0}
+  ScoreThumbnail: {fileID: 0}
+  ScoreText: {fileID: 0}
+  HighScoreThumbnail: {fileID: 0}
+  HighScoreText: {fileID: 0}
+  PlayerObj: {fileID: 0}
+  SpawnParticleSystem: {fileID: 0}
   Death: {fileID: 0}
+  DashPS: {fileID: 0}
+  TakeCoin: {fileID: 0}
+  PlayerDeath: {fileID: 0}
+  PlayerDash: {fileID: 0}
+  changingText: {fileID: 0}
+  changingTextName: {fileID: 0}
+  DashSpeed: 5
+  DashTime: 0.7
 --- !u!95 &2643796338408275580
 Animator:
   serializedVersion: 3
@@ -400,6 +413,7 @@ MonoBehaviour:
   Bullet: {fileID: 605633867312571769, guid: 3310b373d4b4a7d41a786a7f80d4ccc9, type: 3}
   LaserBullet: {fileID: 0}
   ShotgunBullet: {fileID: 5908492063935849304, guid: c88b44fc87673dd4a899fd1c29957379, type: 3}
+  PlusOneAnim: {fileID: 0}
   FireRate: 1000
   ShootPoint: {fileID: 2949404748598747017}
   shooting_position: {fileID: 2949404748598747017}
@@ -409,6 +423,10 @@ MonoBehaviour:
   shotGun: 0
   automatic: 0
   laser: 0
+  TakeWeapon: {fileID: 0}
+  TakeBoostBullet: {fileID: 0}
+  ShootAutomatic: {fileID: 0}
+  bulletAnimWait: 0.4
 --- !u!95 &7227745376305075678
 Animator:
   serializedVersion: 3
