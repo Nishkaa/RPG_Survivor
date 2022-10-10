@@ -22,8 +22,8 @@ public class LaserWallP : MonoBehaviour
     }
     private void Update()
     {
-        rb.velocity = new Vector2(0f, speed);
-        moveLaser();
+        //  rb.velocity = new Vector2(0f, speed);
+        // moveLaser();
     }
     public void moveLaser()
     {
@@ -38,5 +38,11 @@ public class LaserWallP : MonoBehaviour
         speed = -2;
         moveLaser();
     }
-
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }

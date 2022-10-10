@@ -17,8 +17,8 @@ public class LazerWallHorizontal : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(speed, 0f);
-        moveLaser();
+        // rb.velocity = new Vector2(speed, 0f);
+        //moveLaser();
     }
     public void moveLaser()
     {
@@ -32,5 +32,12 @@ public class LazerWallHorizontal : MonoBehaviour
         yield return new WaitForSeconds(directionFloat);
         speed = -2;
         moveLaser();
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

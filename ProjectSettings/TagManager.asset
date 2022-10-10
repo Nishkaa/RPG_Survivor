@@ -16,6 +16,8 @@ TagManager:
   - PlusOneSpeed
   - Target
   - ReEnable
+  - LaserWall
+  - Coin2
   layers:
   - Default
   - TransparentFX

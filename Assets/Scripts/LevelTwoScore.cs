@@ -38,7 +38,6 @@ public class LevelTwoScore : MonoBehaviour
         scoreText.text = wallScore.ToString();
         if (highscoreWall < wallScore)
         {
-
             PlayerPrefs.SetInt("Wallhighscore", wallScore);
 
         }

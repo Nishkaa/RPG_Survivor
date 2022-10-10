@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 2335900256902562168}
   m_Layer: 0
   m_Name: Laser_01
-  m_TagString: Untagged
+  m_TagString: LaserBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

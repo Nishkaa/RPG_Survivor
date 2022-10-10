@@ -91,10 +91,23 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
 
             //Adds 1 point to Score
-            LevelTwoScore.instance.AddPoint();
             Score.instance.AddPoint();
         }
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Coin2")
+        {
+            changingText.fontSize = 90;
+            changingTextName.fontSize = 90;
+            StartCoroutine(FontSizeCD());
+            //Plays coin sound
+            TakeCoin.Play();
+
+            //Player Takes Coin
+            Destroy(collision.gameObject);
+
+            //Adds 1 point to Score
+            LevelTwoScore.instance.AddPoint();
+        }
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "LaserWall")
         {
             StartCoroutine(WaitOneSecond());
 
@@ -123,6 +136,7 @@ public class Player : MonoBehaviour
             //Player death Particle System Animation
             Death.Play();
         }
+
     }
 
     public IEnumerator WaitOneSecond()

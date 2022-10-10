@@ -43,6 +43,7 @@ public class LevelGenerator : MonoBehaviour
     float mobEightSize = 0.3f;
     float mobNineSize = 0.1f;
     float mobTenSize = 7f;
+
     public void Start()
     {
         MobSpawn();
